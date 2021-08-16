@@ -1,0 +1,7 @@
+<title>Stock Market App</title>
+<h1>Stock Market App</h1>
+<p>Find me in app/views/home/index.html.erb</p>
+
+<% StockQuote::Stock.new(api_key: 'pk_50b7099e20a147dbaaea15e037a2e9f1') %>
+<% @stock = StockQuote::Stock.quote("fb") %>
+<%= @stock.inspect %> 
