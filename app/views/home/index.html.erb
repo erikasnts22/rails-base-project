@@ -1,7 +1,26 @@
 <title>Stock Market App</title>
 <h1>Stock Market App</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<%# StockQuote::Stock.new(api_key: 'pk_50b7099e20a147dbaaea15e037a2e9f1') %>
 
-<% StockQuote::Stock.new(api_key: 'pk_50b7099e20a147dbaaea15e037a2e9f1') %>
-<% @stock = StockQuote::Stock.quote("fb") %>
-<%= @stock.inspect %> 
+ <%# FOR SEARCH FORM %>
+ <%# filled out form sends it as a parameter (params) and params name is whatever the text field is called"%>
+<%= form_tag root_path, :method => 'POST' do %>
+    <%= text_field_tag 'ticker', nil, placeholder: "Enter Stock Symbol", size: 50 %>
+    <%= submit_tag 'Search' %>
+<% end %>
+
+<br/> 
+
+<%# error handling %>
+<%# to display if @stock instance has value %>
+<% if @stock %>
+    <%= @stock.company_name %><br/>
+    $<%= @stock.latest_price %><br/> 
+<% elsif @empty_error_msg %>
+    <%= @empty_error_msg %>
+<% end %>
+
+<%# to display if @stock instance has junk or gibberish value %>
+<% if @junk_error_msg %>
+    <%= @junk_error_msg %>
+<% end %>
