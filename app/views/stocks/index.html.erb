@@ -20,8 +20,8 @@
             <% @ticker = StockQuote::Stock.quote(stock.ticker) %>
          <% rescue StandardError %>
         <tr>
-          <td><%= link_to "Error", stock %></td>
-          <td><%= stock.ticker %></td>
+          <td><%= link_to "Error. Stock doesn't exist!", stock %></td>
+          <td>N/A</td>
           <td>N/A</td>
           <td>N/A</td>
           <td><center><%= link_to 'Edit', edit_stock_path(stock) %></center></td>
