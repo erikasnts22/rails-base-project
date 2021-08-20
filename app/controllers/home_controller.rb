@@ -10,13 +10,15 @@ class HomeController < ApplicationController
      # to check if params has empty value
     if params[:ticker] == ""
       @empty_error_msg = "Please Enter A Stock Symbol!"
-    elsif params[:ticker] 
+    elsif params[:ticker]
       @stock = StockQuote::Stock.quote(params[:ticker])
         # to check if params has junk or gibberish value
       if !@stock
           @junk_error_msg = "Stock Symbol Doesn't Exist. Please Try Again!"
       end
     end
+
+
   end
 
   def about 
