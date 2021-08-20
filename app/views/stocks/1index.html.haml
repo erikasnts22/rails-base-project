@@ -12,8 +12,17 @@
   %tbody
     - @stocks.each do |stock|
       - if stock.user_id == current_user.id
+        - if stock.ticker.present?
+          - @empty_error_msg = "Please Enter A Stock Symbol!"
+        - elsif stock.ticker 
+          - @ticker = StockQuote::Stock.quote(stock.ticker)
+          - if !stock.ticker
+            - @junk_error_msg = "Stock Symbol Doesn't Exist. Please Try Again!"
+            
+  
+          
         %tr
-          %td= stock.ticker
+          %td= @ticker.symbol
           %td= stock.user_id
           %td= link_to 'Show', stock
           %td= link_to 'Edit', edit_stock_path(stock)
