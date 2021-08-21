@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :admins, path: 'admin'
-  devise_for :users, path: 'users'
+  devise_for :admins, path: 'admin', controllers: { sessions: "admin/sessions" etc....}
+  devise_for :users, path: 'users', controllers: { sessions: "users/sessions" etc....}
   resources :stocks
   #get 'home/index'
 
