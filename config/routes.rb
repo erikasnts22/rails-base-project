@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :admins, path: 'admin'
+  devise_for :users, path: 'users'
   resources :stocks
-  devise_for :users
   #get 'home/index'
 
   # home page
